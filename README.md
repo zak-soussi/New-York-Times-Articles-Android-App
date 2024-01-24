@@ -46,4 +46,6 @@ L'application suit l'architecture MVVM (Modèle-Vue-VueModèle) pour une gestion
 - [Kotlin](https://kotlinlang.org/): Langage de programmation principal.
 - [Retrofit](https://square.github.io/retrofit/): Client HTTP pour la récupération des données depuis une API.
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel): Gestion des données et de la logique d'affichage.
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) : Stockage réactif des données et l'observation .
+
 
