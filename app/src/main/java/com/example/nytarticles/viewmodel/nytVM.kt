@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nytarticles.data.Article
 import com.example.nytarticles.data.TopArticles
-import com.example.nytarticles.model.metric
 import com.example.nytarticles.model.nytRetrofit
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,7 +39,7 @@ class nytVM : ViewModel() {
     }
 
 
-    fun getTopArticles(metric: metric) {
+    fun getTopArticles(metric: String) {
         val call = nytRetrofit.retrofitService.getTopArticles(metric)
         call.enqueue(object : Callback<TopArticles> {
             override fun onResponse(call: Call<TopArticles>, response: Response<TopArticles>) {

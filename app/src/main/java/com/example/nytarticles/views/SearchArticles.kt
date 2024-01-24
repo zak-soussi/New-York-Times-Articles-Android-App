@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nytarticles.MainActivity
-import com.example.nytarticles.RVadapter_articles
+import com.example.nytarticles.RV_adapter.RVadapter_articles
 import com.example.nytarticles.databinding.ActivitySearchArticlesBinding
 import com.example.nytarticles.viewmodel.nytVM
 
@@ -28,7 +27,7 @@ class SearchArticles : AppCompatActivity() {
             val type = binding.editText.text.toString()
             if (type != "") {
                 binding.editText.text.clear()
-                binding.topAppBar.title = type + "Articles"
+                binding.topAppBar.title = type + " Articles"
                 viewModel.getArticles(type)
             } else {
                 Toast.makeText(this, "You have to type something", Toast.LENGTH_LONG).show()

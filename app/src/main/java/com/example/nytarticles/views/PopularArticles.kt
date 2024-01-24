@@ -9,26 +9,24 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.nytarticles.MainActivity
-import com.example.nytarticles.RVadapter_articles
-import com.example.nytarticles.databinding.ActivityLatestArticlesBinding
+import com.example.nytarticles.RV_adapter.RVadapter_toparticles
+import com.example.nytarticles.databinding.ActivityPopularArticlesBinding
 import com.example.nytarticles.viewmodel.nytVM
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 
-class LatestArticles : AppCompatActivity() {
-    private lateinit var binding: ActivityLatestArticlesBinding
-    private val types = listOf("AI","Tennis","Science","Politics")
-    private lateinit var RVadapter_articles: RVadapter_articles
+class PopularArticles : AppCompatActivity() {
+    private lateinit var binding: ActivityPopularArticlesBinding
+    private val types = listOf("Viewed","Shared","Emailed")
+    private lateinit var RVadapter_toparticles: RVadapter_toparticles
     private val viewModel: nytVM by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLatestArticlesBinding.inflate(getLayoutInflater());
+        binding = ActivityPopularArticlesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        viewModel.getArticles("AI")
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, types)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.Spinner.adapter = adapter
@@ -39,25 +37,24 @@ class LatestArticles : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                val type = types[position]
-                binding.topAppBar.title = type + "Articles"
-                viewModel.getArticles(type)
+                val type = types[position].lowercase()
+                binding.topAppBar.title ="This week most " + type
+                viewModel.getTopArticles(type)
             }
 
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
             }
         })
-
+        viewModel.getTopArticles("viewed")
         binding.topAppBar.setNavigationOnClickListener {
-            intent = Intent(this@LatestArticles, MainActivity::class.java)
+            intent = Intent(this@PopularArticles, MainActivity::class.java)
             startActivity(intent)
         }
-        binding.recyclerView.itemAnimator = SlideInUpAnimator()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        viewModel.articles.observe(this) { articles ->
-            RVadapter_articles = RVadapter_articles(this, articles.response.docs)
-            binding.recyclerView.adapter = RVadapter_articles
+        viewModel.topArticles.observe(this) { articles ->
+            RVadapter_toparticles = RVadapter_toparticles(this, articles.results)
+            binding.recyclerView.adapter = RVadapter_toparticles
         }
 
     }

@@ -1,4 +1,4 @@
-package com.example.nytarticles;
+package com.example.nytarticles.RV_adapter;
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nytarticles.R
 import com.example.nytarticles.data.Doc
 
 
