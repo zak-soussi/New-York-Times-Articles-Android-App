@@ -47,5 +47,7 @@ L'application suit l'architecture MVVM (Modèle-Vue-VueModèle) pour une gestion
 - [Retrofit](https://square.github.io/retrofit/): Client HTTP pour la récupération des données depuis une API.
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel): Gestion des données et de la logique d'affichage.
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) : Stockage réactif des données et l'observation .
+- [RecyclerView](https://developer.android.com/develop/ui/views/layout/recyclerview) : facilite l'affichage efficace des listes dans les applications Android .
+
 
 
