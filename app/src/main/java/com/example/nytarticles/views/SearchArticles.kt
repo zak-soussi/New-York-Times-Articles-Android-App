@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytarticles.RV_adapter.RVadapter_articles
 import com.example.nytarticles.databinding.ActivitySearchArticlesBinding
@@ -33,11 +32,7 @@ class SearchArticles : AppCompatActivity() {
                     intent.putExtra("error", "Please Check Your Internet Connection")
                     startActivity(intent)
                 } else {
-//                    if(binding.editText.text.isEmpty())
-//                    {
-//                        Toast.makeText(this, "Please type something", Toast.LENGTH_LONG).show()
-//                    }
-//                    else {
+
                     binding.topAppBar.title = binding.editText.text.toString() + " Articles"
                     viewModel.getArticles(binding.editText.text.toString())
                     binding.editText.text.clear()
@@ -46,12 +41,12 @@ class SearchArticles : AppCompatActivity() {
                             intent = Intent(this@SearchArticles, ErrorActivity::class.java)
                             intent.putExtra("error", res)
                             startActivity(intent)
-                        }
-                        else{
+                        } else {
 
                             binding.recyclerView.layoutManager = LinearLayoutManager(this)
                             viewModel.articles.observe(this) { articles ->
-                                RVadapter_articles = RVadapter_articles(this, articles.response.docs)
+                                RVadapter_articles =
+                                    RVadapter_articles(this, articles.response.docs)
                                 binding.recyclerView.adapter = RVadapter_articles
                             }
                         }

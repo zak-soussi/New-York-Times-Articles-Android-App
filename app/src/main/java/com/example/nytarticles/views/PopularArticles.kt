@@ -31,27 +31,6 @@ class PopularArticles : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, types)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.Spinner.adapter = adapter
-        viewModel.getTopArticles("viewed")
-        binding.topAppBar.title = "This week most viewed"
-        viewModel.apiError.observe(this@PopularArticles) { res ->
-            if (res != "") {
-                intent = Intent(this@PopularArticles, ErrorActivity::class.java)
-                intent.putExtra("error", res)
-                startActivity(intent)
-            } else {
-
-                binding.recyclerView.layoutManager =
-                    LinearLayoutManager(this@PopularArticles)
-                viewModel.topArticles.observe(this@PopularArticles) { articles ->
-                    RVadapter_toparticles =
-                        RVadapter_toparticles(
-                            this@PopularArticles,
-                            articles.results
-                        )
-                    binding.recyclerView.adapter = RVadapter_toparticles
-                }
-            }
-        }
 
 
 

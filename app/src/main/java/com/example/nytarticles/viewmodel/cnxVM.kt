@@ -4,12 +4,11 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class cnxVM(private val context: Context) : ViewModel() {
 
-    private val _cnxIssue = MutableLiveData<Boolean>()
+    private val _cnxIssue = SingleLiveEvent<Boolean>()
     val cnxIssue: LiveData<Boolean> get() = _cnxIssue
 
     init {

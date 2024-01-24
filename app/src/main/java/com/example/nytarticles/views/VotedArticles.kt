@@ -28,29 +28,6 @@ class VotedArticles : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = VotedArticlesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        viewModel.getArticles("AI")
-        binding.topAppBar.title ="AI Articles"
-        viewModel.apiError.observe(this@VotedArticles) { res ->
-            if (res != "") {
-                intent = Intent(this@VotedArticles, ErrorActivity::class.java)
-                intent.putExtra("error", res)
-                startActivity(intent)
-            } else {
-
-                binding.recyclerView.layoutManager =
-                    LinearLayoutManager(this@VotedArticles)
-                viewModel.articles.observe(this@VotedArticles) { articles ->
-                    RVadapter_articles =
-                        RVadapter_articles(
-                            this@VotedArticles,
-                            articles.response.docs
-                        )
-                    binding.recyclerView.adapter = RVadapter_articles
-                }
-            }
-        }
-
-
 
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, types)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
@@ -71,8 +48,9 @@ class VotedArticles : AppCompatActivity() {
                     } else {
                         val type = types[position]
                         binding.topAppBar.title = type + " Articles"
-                        viewModel.getTopArticles(type)
+                        viewModel.getArticles(type)
                         viewModel.apiError.observe(this@VotedArticles) { res ->
+                            println("nyaaah" + res)
                             if (res != "") {
                                 intent = Intent(this@VotedArticles, ErrorActivity::class.java)
                                 intent.putExtra("error", res)
