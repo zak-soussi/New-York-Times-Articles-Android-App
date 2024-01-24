@@ -33,18 +33,18 @@ L'application suit l'architecture MVVM (Modèle-Vue-VueModèle) pour une gestion
 |Home| Search Articles | Search Articles | Search Results| 
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 
-| ![Home](/Screenshots/12.png) | ![Search](/Screenshots/2.png) | ![Search Articles](/Screenshots/15.png) |![Search Results](/Screenshots/8.png) | 
+| ![Home](/Screenshots/12.jpg) | ![Search](/Screenshots/2.jpg) | ![Search Articles](/Screenshots/15.jpg) |![Search Results](/Screenshots/8.jpg) | 
 
 |Popular Articles| Popular Articles by views| Popular Articles by shares| | Top Voted Topics | 
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 
-| ![Popular Articles](/Screenshots/10.png) | ![Popular Articles by views](/Screenshots/19.png) | ![Popular Articles by shares](/Screenshots/11.png)|![Top Voted Topics](/Screenshots/1.png)| 
+| ![Popular Articles](/Screenshots/10.jpg) | ![Popular Articles by views](/Screenshots/19.jpg) | ![Popular Articles by shares](/Screenshots/11.jpg)|![Top Voted Topics](/Screenshots/1.jpg)| 
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 
 |Top Voted Topics| Top Voted Topics | Erros | Erros| 
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 
-| ![Top Voted Topics](/Screenshots/14.png) | ![Top Voted Topics](/Screenshots/9.png) | ![Erros](/Screenshots/5.png) |![Erros](/Screenshots/16.png) | |
+| ![Top Voted Topics](/Screenshots/14.jpg) | ![Top Voted Topics](/Screenshots/9.jpg) | ![Erros](/Screenshots/5.jpg) |![Erros](/Screenshots/16.jpg) | |
 
 
 
