@@ -1,6 +1,5 @@
 package com.example.nytarticles.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +15,9 @@ class nytVM : ViewModel() {
     private val _articles = MutableLiveData<Article>()
     val articles: LiveData<Article> get() = _articles
 
+    private val _apiError = MutableLiveData<String>()
+    val apiError: LiveData<String> get() = _apiError
+
     private val _topArticles = MutableLiveData<TopArticles>()
     val topArticles: LiveData<TopArticles> get() = _topArticles
 
@@ -28,12 +30,14 @@ class nytVM : ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     _articles.postValue(response.body())
-
+                    _apiError.postValue("")
+                }else{
+                    _apiError.postValue("Oops , Failed to fetch data.\n Please try again.")
                 }
             }
 
             override fun onFailure(call: Call<Article>, t: Throwable) {
-                Log.e("Error", "Call Failed", t)
+                _apiError.postValue("Oops , Failed to fetch data.\n Please try again.")
             }
         })
     }
@@ -45,12 +49,14 @@ class nytVM : ViewModel() {
             override fun onResponse(call: Call<TopArticles>, response: Response<TopArticles>) {
                 if (response.isSuccessful) {
                     _topArticles.postValue(response.body())
-
+                    _apiError.postValue("")
+                }else{
+                    _apiError.postValue("Oops , Failed to fetch data.\n Please try again")
                 }
             }
 
             override fun onFailure(call: Call<TopArticles>, t: Throwable) {
-                Log.e("Error", "Call Failed", t)
+                _apiError.postValue("Oops , Failed to fetch data.\n Please try again.")
             }
         })
     }

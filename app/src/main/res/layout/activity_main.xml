@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D3D3D3"
     tools:context=".views.MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -20,47 +21,54 @@
         android:id="@+id/appimage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/appimage"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="342dp"
         android:layout_height="123dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="WElCOME TO THE NEW YORK TIMES ARTICLES APPLICATION"
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appimage" />
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
 
     <Button
         android:id="@+id/search"
         android:layout_width="154dp"
         android:layout_height="78dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         android:text="Search Articles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/appimage" />
 
     <Button
         android:id="@+id/latest"
         android:layout_width="154dp"
         android:layout_height="78dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
         android:text="Top Voted Topics"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toEndOf="@+id/popular"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
 
     <Button
         android:id="@+id/popular"
         android:layout_width="154dp"
         android:layout_height="78dp"
-        android:layout_marginTop="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
         android:text="This Week most popular Articles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search" />

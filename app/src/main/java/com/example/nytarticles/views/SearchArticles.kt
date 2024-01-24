@@ -9,14 +9,16 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytarticles.RV_adapter.RVadapter_articles
 import com.example.nytarticles.databinding.ActivitySearchArticlesBinding
+import com.example.nytarticles.viewmodel.cnxVM
+import com.example.nytarticles.viewmodel.cnxVMFactory
 import com.example.nytarticles.viewmodel.nytVM
 
 
 class SearchArticles : AppCompatActivity() {
     private lateinit var binding: ActivitySearchArticlesBinding
-
     private lateinit var RVadapter_articles: RVadapter_articles
     private val viewModel: nytVM by viewModels()
+    private val cnx_viewModel: cnxVM by viewModels { cnxVMFactory(this) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,13 +26,37 @@ class SearchArticles : AppCompatActivity() {
         binding = ActivitySearchArticlesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.searchButton.setOnClickListener {
-            val type = binding.editText.text.toString()
-            if (type != "") {
-                binding.editText.text.clear()
-                binding.topAppBar.title = type + " Articles"
-                viewModel.getArticles(type)
-            } else {
-                Toast.makeText(this, "You have to type something", Toast.LENGTH_LONG).show()
+            cnx_viewModel.checkNetwork()
+            cnx_viewModel.cnxIssue.observe(this) { bool ->
+                if (bool == true) {
+                    intent = Intent(this@SearchArticles, ErrorActivity::class.java)
+                    intent.putExtra("error", "Please Check Your Internet Connection")
+                    startActivity(intent)
+                } else {
+//                    if(binding.editText.text.isEmpty())
+//                    {
+//                        Toast.makeText(this, "Please type something", Toast.LENGTH_LONG).show()
+//                    }
+//                    else {
+                    binding.topAppBar.title = binding.editText.text.toString() + " Articles"
+                    viewModel.getArticles(binding.editText.text.toString())
+                    binding.editText.text.clear()
+                    viewModel.apiError.observe(this) { res ->
+                        if (res != "") {
+                            intent = Intent(this@SearchArticles, ErrorActivity::class.java)
+                            intent.putExtra("error", res)
+                            startActivity(intent)
+                        }
+                        else{
+
+                            binding.recyclerView.layoutManager = LinearLayoutManager(this)
+                            viewModel.articles.observe(this) { articles ->
+                                RVadapter_articles = RVadapter_articles(this, articles.response.docs)
+                                binding.recyclerView.adapter = RVadapter_articles
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -38,11 +64,6 @@ class SearchArticles : AppCompatActivity() {
         binding.topAppBar.setNavigationOnClickListener {
             intent = Intent(this@SearchArticles, MainActivity::class.java)
             startActivity(intent)
-        }
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        viewModel.articles.observe(this) { articles ->
-            RVadapter_articles = RVadapter_articles(this, articles.response.docs)
-            binding.recyclerView.adapter = RVadapter_articles
         }
 
     }
