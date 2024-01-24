@@ -15,6 +15,12 @@
         android:theme="@style/Theme.NYTArticles"
         tools:targetApi="31">
         <activity
+            android:name=".views.SearchArticles"
+            android:exported="false" />
+        <activity
+            android:name=".views.LatestArticles"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

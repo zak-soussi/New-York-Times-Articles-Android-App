@@ -14,26 +14,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="" />
+        app:title="NYT Android App" />
 
-    <Spinner
-        android:id="@+id/Spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <ImageView
+        android:id="@+id/appimage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/appimage"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="342dp"
+        android:layout_height="123dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:minHeight="48dp"
+        android:text="WElCOME TO THE NEW YORK TIMES ARTICLES APPLICATION"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topAppBar" />
+        app:layout_constraintTop_toBottomOf="@+id/appimage" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Spinner" />
+    <Button
+        android:id="@+id/search"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="44dp"
+        android:text="Search Articles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/latest"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="112dp"
+        android:text="Latest News on..."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/viewed"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="93dp"
+        android:text="Most Viewed This Week"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+
+    <Button
+        android:id="@+id/shared"
+        android:layout_width="154dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="Most Shared This Week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latest" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
